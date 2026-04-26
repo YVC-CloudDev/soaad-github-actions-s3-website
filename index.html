@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">MyWebsite</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" id="home">
+        <div class="container">
+            <h1>Welcome to <span class="highlight">MyWebsite</span></h1>
+            <p>A simple static website template deployed to AWS S3 with GitHub Actions.</p>
+            <a href="#features" class="btn">Learn More</a>
+        </div>
+    </header>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Features</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Fast Hosting</h3>
+                    <p>Hosted on Amazon S3 for reliable, low-latency static file serving.</p>
+                </div>
+                <div class="card">
+                    <h3>Automated Deploys</h3>
+                    <p>Push to <code>main</code> and GitHub Actions deploys your site automatically.</p>
+                </div>
+                <div class="card">
+                    <h3>Secure Auth</h3>
+                    <p>Uses OIDC federation — no static AWS keys stored in your repo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <p>Have questions? Reach out at <a href="mailto:you@example.com">you@example.com</a>.</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 MyWebsite. Built with GitHub Actions.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

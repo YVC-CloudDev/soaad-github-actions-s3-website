@@ -1,0 +1,58 @@
+# ============================================================
+# DEPLOY TO AWS S3 — GitHub Actions Workflow
+# ============================================================
+# Automatically uploads the static website to an S3 bucket
+# whenever code is pushed to main.
+#
+# Uses OIDC (OpenID Connect) to authenticate with AWS —
+# no static access keys needed.
+#
+# ---- PREREQUISITES ----
+# 1. An S3 bucket configured for static website hosting.
+# 2. An IAM Role with s3:PutObject, s3:DeleteObject, and
+#    s3:ListBucket permissions, trusting the GitHub OIDC provider.
+# 3. Two GitHub repository secrets:
+#      • AWS_ROLE_ARN   — the ARN of the IAM Role
+#      • S3_BUCKET_NAME — the name of the S3 bucket
+# ============================================================
+
+name: Deploy to S3
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  id-token: write    # Required for OIDC token generation
+  contents: read     # Required to checkout the repo
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+  deploy:
+    name: Upload to S3
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
+      - name: Sync files to S3
+        run: |
+          aws s3 sync . s3://${{ secrets.S3_BUCKET_NAME }} \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude "README.md" \
+            --exclude "LICENSE"
