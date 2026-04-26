@@ -1,64 +1,212 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Soaad Hujerat - Static Website</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #fff6fb, #fde7f3, #f9d7ea);
+      color: #5b3b4a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1150px;
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid #f5cddd;
+      border-radius: 28px;
+      box-shadow: 0 15px 40px rgba(214, 109, 160, 0.15);
+      padding: 28px;
+    }
+
+    .top-badge {
+      display: inline-block;
+      background: #fce7f3;
+      color: #a8557b;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      color: #8b3a62;
+      margin-bottom: 12px;
+      line-height: 1.1;
+    }
+
+    .hero h1 span {
+      color: #ec4899;
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #7a5566;
+      max-width: 760px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    .highlight {
+      margin: 24px auto 26px;
+      max-width: 820px;
+      background: #fff1f7;
+      border: 1px solid #f9c5dc;
+      border-radius: 18px;
+      padding: 14px 18px;
+      text-align: center;
+      font-size: 17px;
+      color: #9d4b73;
+      font-weight: 600;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .card {
+      background: #fff9fc;
+      border: 1px solid #f7d6e5;
+      border-radius: 20px;
+      padding: 22px 18px;
+      text-align: center;
+      box-shadow: 0 8px 18px rgba(214, 109, 160, 0.08);
+    }
+
+    .icon {
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      color: #8b3a62;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 15px;
+      color: #7a5566;
+      line-height: 1.6;
+    }
+
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      font-size: 14px;
+      color: #9a6a7f;
+      padding-top: 16px;
+      border-top: 1px solid #f5d7e4;
+    }
+
+    @media (max-width: 950px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero h1 {
+        font-size: 42px;
+      }
+
+      .hero p {
+        font-size: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 12px;
+      }
+
+      .page {
+        padding: 20px;
+      }
+
+      .cards {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .highlight {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <a href="index.html" class="logo">MyWebsite</a>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
+  <div class="page">
+    <div class="hero">
+      <div class="top-badge">☁ AWS • S3 • GitHub Actions</div>
+      <h1>Hello, I'm <span>Soaad Hujerat</span></h1>
+      <p>
+        Welcome to my static website deployed automatically to Amazon S3
+        using GitHub Actions.
+      </p>
+    </div>
 
-    <header class="hero" id="home">
-        <div class="container">
-            <h1>Welcome to <span class="highlight">MyWebsite</span></h1>
-            <p>A simple static website template deployed to AWS S3 with GitHub Actions.</p>
-            <a href="#features" class="btn">Learn More</a>
-        </div>
-    </header>
+    <div class="highlight">
+      🌸 This website demonstrates automated cloud deployment with a clean static website design.
+    </div>
 
-    <section class="features" id="features">
-        <div class="container">
-            <h2>Features</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>Fast Hosting</h3>
-                    <p>Hosted on Amazon S3 for reliable, low-latency static file serving.</p>
-                </div>
-                <div class="card">
-                    <h3>Automated Deploys</h3>
-                    <p>Push to <code>main</code> and GitHub Actions deploys your site automatically.</p>
-                </div>
-                <div class="card">
-                    <h3>Secure Auth</h3>
-                    <p>Uses OIDC federation — no static AWS keys stored in your repo.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="cards">
+      <div class="card">
+        <div class="icon">👩‍🎓</div>
+        <h3>Student</h3>
+        <p>Soaad Hujerat</p>
+      </div>
 
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <p>Have questions? Reach out at <a href="mailto:you@example.com">you@example.com</a>.</p>
-        </div>
-    </section>
+      <div class="card">
+        <div class="icon">🪣</div>
+        <h3>Amazon S3</h3>
+        <p>Static website hosting using an S3 bucket.</p>
+      </div>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 MyWebsite. Built with GitHub Actions.</p>
-        </div>
-    </footer>
+      <div class="card">
+        <div class="icon">⚙️</div>
+        <h3>GitHub Actions</h3>
+        <p>The deployment updates automatically after every push.</p>
+      </div>
 
-    <script src="js/main.js"></script>
+      <div class="card">
+        <div class="icon">🔐</div>
+        <h3>Secure Deployment</h3>
+        <p>Configured with IAM Role and GitHub Secrets.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      Created by <strong>Soaad Hujerat</strong> • Weekly Assignment • Static Website on S3
+    </div>
+  </div>
 </body>
 </html>
