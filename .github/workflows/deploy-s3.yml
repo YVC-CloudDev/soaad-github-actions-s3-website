@@ -1,4 +1,4 @@
-name: Deploy Static Website to S3
+name: Deploy Static Website to S3 and Invalidate CloudFront
 
 on:
   push:
@@ -31,3 +31,9 @@ jobs:
             --exclude ".github/*" \
             --exclude "README.md" \
             --exclude "LICENSE"
+
+      - name: Create CloudFront invalidation
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ secrets.CLOUDFRONT_DIST_ID }} \
+            --paths "/*"
